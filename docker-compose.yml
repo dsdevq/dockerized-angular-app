@@ -1,0 +1,10 @@
+version: "3"
+services:
+  angular-app:
+    build: .
+    ports:
+      - "4200:4200"    # Map the container's port 4200 to your host's port 4200
+    volumes:
+      - ./src:/app/src   # Mount the src folder for live reload
+      - ./node_modules:/app/node_modules  # Avoid node_modules syncing with the host
+    command: ["ng", "serve", "--host", "0.0.0.0", "--poll=2000"]  # Use polling to watch for changes
